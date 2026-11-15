@@ -17,6 +17,7 @@
     <script src="app.js" defer></script>
   </head>
   <body class="donation-landing">
+    <p class="demo-notice"><strong>Demonstração acadêmica.</strong> Use dados fictícios. Os pagamentos são simulados.</p>
     <header class="header wrap">
       <a
         href="https://www.ministeriopaovivo.com.br/"
@@ -219,7 +220,7 @@
                 >
                   <legend>Dados para emissão do boleto</legend>
                   <p class="help">
-                    Use dados fictícios para testar o fluxo. Nenhum boleto será emitido.
+                    Para testar como pessoa física, use o CPF de exemplo 529.982.247-25. O boleto é simulado.
                   </p>
                   <div
                     class="radio-row"
@@ -335,14 +336,38 @@
           aria-labelledby="boleto-heading"
         >
           <div class="eyebrow">CONTRIBUIÇÃO POR BOLETO</div>
-          <h2 id="boleto-heading">Solicitação de boleto simulada</h2>
-          <p>Nenhum boleto será emitido.</p>
+          <h2 id="boleto-heading">Aguarde seu boleto pelo WhatsApp.</h2>
+          <p>Na produção, você receberia o boleto pelo WhatsApp informado. Nesta demonstração, a solicitação abre o WhatsApp de teste e o boleto é simulado.</p>
 
         </section>
         <div id="payment-options">
-          <section class="donation-card">
-            <h2>Pagamento simulado</h2>
-            <p>Ambiente de avaliação. Nenhum valor deve ser pago.</p>
+          <section class="donation-card" aria-labelledby="donation-title">
+            <div class="eyebrow">DEMONSTRAÇÃO ACADÊMICA</div>
+            <h2 id="donation-title">Sua oferta leva<br />esta obra adiante.</h2>
+            <p>Veja como funciona a etapa de pagamento da sua contribuição.</p>
+            <div class="qr-block">
+              <div class="qr-frame">
+                <img src="assets/pix-simulado.png" width="185" height="185" alt="QR Code Pix simulado, sem valor para pagamento" />
+              </div>
+              <p>Pix de demonstração. Use o botão para simular a cópia do código.</p>
+              <button id="copy-pix" class="button copy" type="button">Copiar Pix Copia e Cola</button>
+              <span id="copy-status" role="status" class="copy-status"></span>
+              <details id="pix-details">
+                <summary>Ver código Pix simulado</summary>
+                <textarea id="pix-code" readonly aria-label="Código Pix simulado" rows="3">PIX-DEMONSTRACAO-MPV-SEM-VALOR</textarea>
+              </details>
+            </div>
+            <div class="bank">
+              <h3>Transferência ou depósito</h3>
+              <p>Simulação. Nenhum valor deve ser transferido.</p>
+            </div>
+            <div class="receipt">
+              <span aria-hidden="true">↗</span>
+              <div>
+                <strong>Conclua a simulação para baixar a ficha.</strong>
+                <p>Nenhum comprovante é necessário.</p>
+              </div>
+            </div>
           </section>
         </div>
         <section
@@ -354,8 +379,7 @@
           <h2 id="finish-donation-heading">Tudo pronto para finalizar?</h2>
           <label class="consent"
             ><input type="checkbox" id="confirm-donation" /><span
-              >Confirmo que enviei meu cadastro, fiz a contribuição e enviei o
-              comprovante pelo WhatsApp.</span>
+              >Confirmo a conclusão do pagamento simulado.</span>
             ></label
           >
           <button

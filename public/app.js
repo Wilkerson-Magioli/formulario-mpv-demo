@@ -80,6 +80,19 @@ for (const name of ["orando", "contribuindo"])
     document.querySelector("#participation-error").hidden = true;
   });
 
+document.querySelector("#copy-pix").addEventListener("click", async () => {
+  const code = document.querySelector("#pix-code");
+  const status = document.querySelector("#copy-status");
+  try {
+    await navigator.clipboard.writeText(code.value);
+    status.textContent = "Código Pix simulado copiado.";
+  } catch {
+    document.querySelector("#pix-details").open = true;
+    code.select();
+    status.textContent = "Selecione e copie o código simulado.";
+  }
+});
+
 form.addEventListener("submit", submitParticipation);
 
 async function submitParticipation(event) {
@@ -209,9 +222,9 @@ function showCompletion() {
       ? "Doação Realizada com sucesso"
       : "Participação concluída com sucesso";
   document.querySelector("#completion-detail").textContent = submittedWithBoleto
-    ? "Após receber seu cadastro, o Ministério Pão Vivo emitirá o boleto e enviará para o WhatsApp informado. Depois de pagar, envie o comprovante ao Ministério Pão Vivo."
+    ? "Na produção, você receberia o boleto no WhatsApp informado. Nesta demonstração, a solicitação é simulada."
     : submittedWithContribution
-      ? "Conclusão informada por você. O Ministério Pão Vivo fará a conferência do pagamento e do comprovante."
+      ? "Pagamento simulado concluído."
       : "Obrigado por se unir a esta obra em oração!";
   document.querySelector("#completion-view").hidden = false;
   window.participationCard.generate(submittedParticipation);

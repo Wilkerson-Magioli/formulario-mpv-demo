@@ -9,6 +9,7 @@ const types = {
   ".css": "text/css; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
   ".png": "image/png",
+  ".pdf": "application/pdf",
 };
 http
   .createServer(async (req, res) => {
@@ -31,7 +32,9 @@ http
             ? "/index.html"
             : name === "/admin"
               ? "/admin.html"
-              : name),
+              : name === "/acesso"
+                ? "/acesso.html"
+                : name),
       );
       if (!file.startsWith(root + path.sep)) {
         res.writeHead(403).end();
