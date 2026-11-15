@@ -136,18 +136,28 @@ export default async function participacao(req, res) {
     return responder(400, "Não foi possível ler o cadastro.");
   }
   const chave = corpo?.chave;
-  const registro = validar(corpo?.participacao);
+  const confirmarPix = corpo?.acao === "confirmar-pix";
+  const registro = confirmarPix ? null : validar(corpo?.participacao);
   if (
     typeof chave !== "string" ||
     !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(
       chave,
     ) ||
-    !registro
+    (!confirmarPix && !registro)
   )
     return responder(422, "Confira os campos do formulário.");
 
   try {
     const sql = neon(process.env.MPV_DATABASE_URL);
+    if (confirmarPix) {
+      const [resultado] = await sql.query(
+        "SELECT ministerio.confirmar_pix_simulado($1::uuid) AS confirmado",
+        [chave],
+      );
+      return resultado.confirmado
+        ? res.writeHead(204).end()
+        : responder(404, "Participação por Pix não encontrada.");
+    }
     await sql.query(
       "SELECT ministerio.registrar_participacao($1::uuid, $2::jsonb)",
       [chave, JSON.stringify(registro)],

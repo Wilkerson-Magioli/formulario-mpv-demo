@@ -231,9 +231,36 @@ function showCompletion() {
   window.scrollTo({ top: 0, behavior: "instant" });
   document.querySelector("#completion-title").focus({ preventScroll: true });
 }
+async function confirmSimulatedDonation() {
+  const button = document.querySelector("#complete-donation");
+  if (!submittedParticipation || button.disabled) return;
+  if (submittedParticipation.metodo !== "Pix") {
+    showCompletion();
+    return;
+  }
+
+  const status = document.querySelector("#payment-status");
+  button.disabled = true;
+  status.textContent = "Registrando pagamento simulado…";
+  try {
+    const response = await fetch("/api/participacao", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ acao: "confirmar-pix", chave: registrationAttempt.chave }),
+      signal: AbortSignal.timeout(15000),
+    });
+    if (response.status !== 204) throw new Error("Falha na confirmação");
+    status.textContent = "";
+    showCompletion();
+  } catch {
+    status.textContent = "Não foi possível registrar o Pix simulado. Tente novamente.";
+  } finally {
+    button.disabled = !document.querySelector("#confirm-donation").checked;
+  }
+}
 document
   .querySelector("#complete-donation")
-  .addEventListener("click", showCompletion);
+  .addEventListener("click", confirmSimulatedDonation);
 document
   .querySelector("#complete-prayer")
   .addEventListener("click", showCompletion);

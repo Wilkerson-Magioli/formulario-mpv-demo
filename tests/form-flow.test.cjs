@@ -114,6 +114,10 @@ async function scenario(
       assert.equal(url, "/api/participacao");
       assert.equal(options.method, "POST");
       requests.push(JSON.parse(options.body));
+      if (requests.at(-1).acao === "confirmar-pix") {
+        assert.equal(requests.at(-1).chave, requests.findLast((request) => request.participacao).chave);
+        return { status: 204 };
+      }
       assert.equal(requests.at(-1).participacao.consentimento, true);
       assert.equal(requests.at(-1).participacao.dataParticipacao, "2026-11-12");
       return { status: failFirstSave && requests.length === 1 ? 503 : 204 };
@@ -188,13 +192,13 @@ async function scenario(
   } else if (contributing) {
     assert.match(new URL(opened[0]).searchParams.get("text"), /1,00/);
     assert.equal(node("#complete-donation").disabled, true);
-    emit(node("#complete-donation"), "click");
+    await emit(node("#complete-donation"), "click");
     assert.equal(node("#payment-view").hidden, false);
     assert.equal(cards.length, 0, "Sem confirmação, não deve haver ficha");
     node("#confirm-donation").checked = true;
     emit(node("#confirm-donation"), "change");
     assert.equal(node("#complete-donation").disabled, false);
-    emit(node("#complete-donation"), "click");
+    await emit(node("#complete-donation"), "click");
     assert.equal(
       node("#completion-title").textContent,
       "Doação Realizada com sucesso",
