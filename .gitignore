@@ -1,0 +1,12 @@
+node_modules/
+tmp/
+*.log
+dist/
+output/
+outputs/
+.vercel/
+.env
+.env.*
+/LISTA DE PARCEIROS CADASTRADOS PELA FICHA.xlsx
+/~$*.xlsx
+!/.env.example
