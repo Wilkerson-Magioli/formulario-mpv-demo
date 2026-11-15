@@ -65,6 +65,8 @@ A avaliação pode ser feita no navegador com dados fictícios. A [página de ac
 
 ## 5. Demonstração (Resultados)
 
+[Apresentação técnica no Canva](https://canva.link/snuz6045d1qkaao)
+
 A carga fictícia inclui duas participações e um pagamento simulado. O cadastro feito no formulário fica disponível para busca no painel. O arquivo exportado tem as abas **Doadores**, **Participações** e **Doações recebidas**.
 
 ![Exemplo de ficha gerada com dados fictícios](docs/imagens/conclusao.png)
