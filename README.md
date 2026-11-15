@@ -6,7 +6,7 @@ Esta versão usa registros fictícios e simula os pagamentos. Use apenas dados i
 
 ## 1. Sobre o Projeto e Problema Resolvido
 
-O Ministério Pão Vivo mantinha o histórico de doadores em Excel. O sistema centraliza esse histórico e os novos cadastros em um banco de dados, automatiza o registro de participações e permite consultar e exportar os dados em uma área administrativa protegida por senha.
+O Ministério Pão Vivo mantinha o histórico de doadores em Excel e o formulário era preenchido no papel. O sistema centraliza esse histórico e os novos cadastros em um banco de dados, automatiza o registro de participações e permite consultar e exportar os dados em uma área administrativa protegida por senha.
 
 No formulário público, a pessoa informa a data e escolhe participar orando, contribuindo ou das duas formas. As opções de contribuição são Pix, transferência e boleto.
 
