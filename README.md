@@ -50,7 +50,7 @@ O banco organiza os dados em **Doadores**, **Participações** e **Doações rec
 
 A avaliação pode ser feita no navegador com dados fictícios. A [página de acesso por QR Code](https://formulario-mpv-demo.vercel.app/acesso) permite abrir o formulário ou baixar o [PDF da demonstração](public/assets/qr-code-demo.pdf).
 
-1. Abra o [formulário da demo](https://formulario-mpv-demo.vercel.app/) e cadastre uma participação com dados fictícios. Escolher **Orando** permite percorrer o fluxo sem preencher os campos de pagamento.
+1. Abra o [Formulário da Demo](https://formulario-mpv-demo.vercel.app/) e cadastre uma participação com dados fictícios. Escolher **Orando** permite percorrer o fluxo sem preencher os campos de pagamento.
 2. Confira a abertura do WhatsApp de teste com a mensagem preenchida. Você pode conferir a mensagem antes do envio. Volte ao formulário e baixe a ficha em imagem.
 3. Abra o [Painel Admin Demo](https://formulario-mpv-demo.vercel.app/admin) e use a senha de avaliação `Avaliacao-MPV-2026!`.
 4. Busque o cadastro fictício, experimente os filtros e exporte para Excel. Para ver os pagamentos simulados, limpe a busca e exporte novamente.
